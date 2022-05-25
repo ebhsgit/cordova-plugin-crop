@@ -90,7 +90,8 @@ class CropPlugin : CordovaPlugin() {
         Log.d(TAG, "Crop success")
         val tempImagePath = result.getUriFilePath(cordova.context)
         Log.d(TAG, "Temp file Path ${tempImagePath}")
-        callbackContext.success(tempImagePath)
+        val fileUri = "file://${tempImagePath}?${System.currentTimeMillis()}"
+        callbackContext.success(fileUri)
     }
 
     private fun handleCancel(callbackContext: CallbackContext) {
